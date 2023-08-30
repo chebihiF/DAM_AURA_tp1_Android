@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/l1"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -38,6 +39,41 @@
             android:gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/resp1"
+            android:text="189"
+            android:textSize="20sp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/resp2"
+            android:text="100"
+            android:textSize="20sp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/resp3"
+            android:text="246"
+            android:textSize="20sp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
 
