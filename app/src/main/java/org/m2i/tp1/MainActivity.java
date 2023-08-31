@@ -12,8 +12,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Random random = new Random(); // class random => generer nombres aleatoires ...
-    TextView nbr1_txt, nbr2_txt;
-    Button resp1_btn, resp2_btn, resp3_btn;
+    TextView nbr1_txt, nbr2_txt, score_txt;
+    Button resp1_btn, resp2_btn, resp3_btn, start_btn;
+
+    boolean game_started = false ;
+
+    int score = 0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +32,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resp1_btn =findViewById(R.id.resp1);
         resp2_btn =findViewById(R.id.resp2);
         resp3_btn =findViewById(R.id.resp3);
+        score_txt = findViewById(R.id.score);
+        start_btn = findViewById(R.id.start);
 
         resp1_btn.setOnClickListener(this);
         resp2_btn.setOnClickListener(this);
         resp3_btn.setOnClickListener(this);
+
+        start_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start_game();
+                game_started = true;
+            }
+        });
     }
 
     public void start_game(){
+
         int n1 = random.nextInt(200); // générer un nombre aleatoire entre 0 - 200
         int n2 = random.nextInt(200); // générer un nombre aleatoire entre 0 - 200
         int resp = n1 + n2;
@@ -63,6 +78,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        start_game();
+        if(game_started) {
+
+            Button btn = (Button) v;
+            int resp = Integer.parseInt(btn.getText().toString());
+            int nbr1 = Integer.parseInt(nbr1_txt.getText().toString());
+            int nbr2 = Integer.parseInt(nbr2_txt.getText().toString());
+            if (resp == nbr1 + nbr2)
+                score++;
+            else
+                score--;
+            score_txt.setText("Score : " + score);
+            if(score > 0)
+                score_txt.setTextColor(getResources().getColor(R.color.my_green));
+            else if (score < 0)
+                score_txt.setTextColor(getResources().getColor(R.color.my_red));
+
+
+            start_game();
+        }
     }
 }

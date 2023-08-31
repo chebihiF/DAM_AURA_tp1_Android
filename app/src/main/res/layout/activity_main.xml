@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/nbr1"
-            android:hint="156"
+            android:hint="0"
             android:textSize="30sp"
             android:gravity="center"
             android:layout_width="100dp"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/nbr2"
-            android:hint="90"
+            android:hint="0"
             android:textSize="30sp"
             android:gravity="center"
             android:layout_width="100dp"
@@ -64,7 +64,7 @@
         <Button
             android:layout_marginHorizontal="10dp"
             android:id="@+id/resp1"
-            android:text="189"
+            android:text="0"
             android:textSize="20sp"
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
@@ -72,7 +72,7 @@
         <Button
             android:layout_marginHorizontal="10dp"
             android:id="@+id/resp2"
-            android:text="100"
+            android:text="0"
             android:textSize="20sp"
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
@@ -80,7 +80,7 @@
         <Button
             android:layout_marginHorizontal="10dp"
             android:id="@+id/resp3"
-            android:text="246"
+            android:text="0"
             android:textSize="20sp"
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
@@ -100,6 +100,7 @@
         android:textSize="30sp" />
 
     <Button
+        android:id="@+id/start"
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:text="Start"
