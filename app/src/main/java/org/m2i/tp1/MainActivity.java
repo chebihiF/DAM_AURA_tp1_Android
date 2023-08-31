@@ -7,6 +7,8 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Random;
 
 
@@ -14,13 +16,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Random random = new Random(); // class random => generer nombres aleatoires ...
     TextView nbr1_txt, nbr2_txt, score_txt, timer_txt;
-    Button resp1_btn, resp2_btn, resp3_btn, start_btn;
+    Button resp1_btn, resp2_btn, resp3_btn, start_btn, stop_btn;
 
     CountDownTimer timer ;
 
     boolean game_started = false ;
 
-    int score = 0, timer_unit = 5 ;
+    int score = 0, timer_unit = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         score_txt = findViewById(R.id.score);
         start_btn = findViewById(R.id.start);
         timer_txt = findViewById(R.id.timer_txt);
+        stop_btn = findViewById(R.id.stop);
 
 
         resp1_btn.setOnClickListener(this);
@@ -49,6 +52,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 start_game();
                 game_started = true;
+                start_btn.setEnabled(false);
+            }
+        });
+
+        stop_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.cancel();
+                nbr1_txt.setText("0");
+                nbr2_txt.setText("0");
+                resp1_btn.setText("0");
+                resp2_btn.setText("0");
+                resp3_btn.setText("0");
+                score = 0 ;
+                start_btn.setEnabled(true);
+                timer_txt.setText("5");
             }
         });
     }
@@ -116,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onTick(long millisUntilFinished) {
                 timer_unit -- ;
                 timer_txt.setText(""+timer_unit);
+
             }
 
             @Override
